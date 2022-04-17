@@ -34,7 +34,7 @@ int main(){
         printf("%s\n", out);
 
         int flag = 1;
-        for(int i=strlen(out)-1; i>=0; i--){
+        for(int i=strlen(out)-1; i>0; i--){
             if(flag){
                 out[i] = (char)(1 ^ (out[i] - '0') + '0');
                 flag = 0;
