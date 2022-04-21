@@ -35,6 +35,29 @@ seg_aend = [ 0x1F,  # 0b000000011111
 #            ];
 
 
+
+def bitwise_and_bytes(a: bytes, b: int) -> bytes:
+    result_int = int.from_bytes(a, byteorder="big") & int.from_bytes(b, byteorder="big")
+    return result_int.to_bytes(max(len(a), len(b)), byteorder="big")
+
+def bitwise_or_bytes(a: bytes, b: int) -> bytes:
+    result_int = int.from_bytes(a, byteorder="big") | int.from_bytes(b, byteorder="big")
+    return result_int.to_bytes(max(len(a), len(b)), byteorder="big")
+
+def bitwise_xor_bytes(a: bytes, b: int) -> bytes:
+    result_int = int.from_bytes(a, byteorder="big") ^ int.from_bytes(b, byteorder="big")
+    return result_int.to_bytes(max(len(a), len(b)), byteorder="big")
+
+def bitwise_shift_left(a: bytes, b: int) -> bytes:
+    result_int = int.from_bytes(a, byteorder="big") << b
+    return result_int.to_bytes(max(len(a), len(b)), byteorder="big")
+
+def bitwise_shift_right(a: bytes, b: int) -> bytes:
+    result_int = int.from_bytes(a, byteorder="big") >> b
+    return result_int.to_bytes(max(len(a), len(b)), byteorder="big")
+    
+
+
 def find_seg(data, size=8):
     for i in range(size):
         if data <= seg_aend[i]:
@@ -90,6 +113,8 @@ wf.setframerate(RATE)
 wf.writeframes(b''.join(frames))
 wf.close()
 
+
+# rf = wave.open(G711_OUTPUT_FILENAME, 'rb')
 
 # reference - https://www.vine.wiki/a_keji/202109/304208.html
 # reference - https://blog.csdn.net/jenie/article/details/106298846
