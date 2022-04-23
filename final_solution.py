@@ -1,6 +1,7 @@
 import pyaudio
 import wave
 
+
 # audio setup
 CHUNK = 160
 FORMAT = pyaudio.paInt16
