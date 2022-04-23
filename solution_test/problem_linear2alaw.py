@@ -55,6 +55,8 @@ def bitwise_shift_left(a: bytes, b: int) -> bytes:
 def bitwise_shift_right(a: bytes, b: int) -> bytes:
     result_int = int.from_bytes(a, byteorder="big") >> b
     return result_int.to_bytes(max(len(a), len(b)), byteorder="big")
+
+
     
 
 
