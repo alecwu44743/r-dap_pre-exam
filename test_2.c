@@ -2,9 +2,7 @@
 #include <stdlib.h>
 
 #define QUANT_MASK 0xf
-#define NSEGS      8
 #define SEG_SHIFT  4
-#define SEG_MASK   0x70
 
 static int seg_aend[8] = {
                             0x1F, 0x3F, 0x7F, 0xFF,

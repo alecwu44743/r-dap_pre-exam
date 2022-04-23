@@ -1,7 +1,5 @@
 QUANT_MASK = 0xf
-NSEGS      = 8
 SEG_SHIFT  = 4
-SEG_MASK   = 0x70
 
 seg_aend = [
                 0x1F, 0x3F, 0x7F, 0xFF,
