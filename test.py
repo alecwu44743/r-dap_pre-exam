@@ -42,4 +42,4 @@ def pcm_to_g711a(data = "0000110010001010") -> str:
     return out
 
 
-print(pcm_to_g711a())
+# print(pcm_to_g711a())

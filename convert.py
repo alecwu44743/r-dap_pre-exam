@@ -37,11 +37,14 @@ def linear_to_alaw(data):
         return aval ^ mask
     
     
-while 1:
-    data = input("Enter data: ")
+# while 1:
+#     data = input("Enter data: ")
     
-    if int(data) < 0:
-        break
-    else:
-        print(linear_to_alaw(int(data)))
-        print()
+#     if int(data) < 0:
+#         break
+#     else:
+#         print(linear_to_alaw(int(data)))
+#         print()
+
+for i in range(256+1):
+    print(linear_to_alaw(int(i)))

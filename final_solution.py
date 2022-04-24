@@ -29,7 +29,7 @@ seg_aend = [
 
 
 
-def int2bytes(val: int, size=2) -> bytes:
+def int2bytes(val: int, size=1) -> bytes:
     out = val.to_bytes(size, 'big')
     return out
 
@@ -49,6 +49,8 @@ def linear_to_alaw(bytes_val: bytes) -> bytes:
     out = bytes()
     
     for data in bytes_val:
+        
+        # print(data)
 
         data = data >> 3
     
@@ -64,12 +66,21 @@ def linear_to_alaw(bytes_val: bytes) -> bytes:
             out += int2bytes((0x7F ^ mask))
         else:
             aval = seg << SEG_SHIFT
+            # print(aval)
             
             if seg < 2:
                 aval |= (data >> 1) & QUANT_MASK
             else:
                 aval |= (data >> seg) & QUANT_MASK
+            # print(aval)
+            # print("->" + str(aval ^ mask))
             out += int2bytes((aval ^ mask))
+            
+        # print()
+        # print()
+        # print(out)
+        # print()
+        # print()
             
     return out
 
