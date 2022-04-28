@@ -98,6 +98,7 @@ wf.close()
 # reference - https://www.vine.wiki/a_keji/202109/304208.html
 # reference - https://blog.csdn.net/jenie/article/details/106298846
 # reference - https://www.itread01.com/content/1541337363.html
+# reference - https://www.796t.com/content/1541337363.html
 
 '''
 输入pcm数据为3210, 二进制对应为 (0000 1100 1000 1010)

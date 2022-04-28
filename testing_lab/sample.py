@@ -22,7 +22,7 @@ print("start recording......")
 frames = []
 for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
     data = stream.read(CHUNK)
-    print_data(data)
+    # print_data(data)
     print(data,"\n\n")
     frames.append(data)
 print("end!")
