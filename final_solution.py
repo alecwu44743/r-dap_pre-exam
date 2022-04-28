@@ -29,7 +29,7 @@ seg_aend = [
 
 
 
-def int2bytes(val: int, size=1) -> bytes:
+def int2bytes(val: int, size=2) -> bytes:
     out = val.to_bytes(size, 'big')
     return out
 
@@ -47,34 +47,45 @@ def find_aend(data, size=8):
 
 def linear_to_alaw(bytes_val: bytes) -> bytes:
     out = bytes()
+    sum_data = 0
+    p = 0
     
     for data in bytes_val:
         
         # print(data)
-
-        data = data >> 3
-    
-        if data >= 0:
-            mask = 0xD5
-        else:
-            mask = 0x55
-            data = -data - 1
+        if p == 1:
+            data = sum_data*16*16 + data
             
-        seg = find_aend(data)
-
-        if seg >= 8:
-            out += int2bytes((0x7F ^ mask))
-        else:
-            aval = seg << SEG_SHIFT
-            # print(aval)
-            
-            if seg < 2:
-                aval |= (data >> 1) & QUANT_MASK
+            data = data >> 3
+        
+            if data >= 0:
+                mask = 0xD5
             else:
-                aval |= (data >> seg) & QUANT_MASK
-            # print(aval)
-            # print("->" + str(aval ^ mask))
-            out += int2bytes((aval ^ mask))
+                mask = 0x55
+                data = -data - 1
+                
+            seg = find_aend(data)
+
+            if seg >= 8:
+                out += int2bytes((0x7F ^ mask))
+            else:
+                aval = seg << SEG_SHIFT
+                # print(aval)
+                
+                if seg < 2:
+                    aval |= (data >> 1) & QUANT_MASK
+                else:
+                    aval |= (data >> seg) & QUANT_MASK
+                # print(aval)
+                # print("->" + str(aval ^ mask))
+                out += int2bytes((aval ^ mask))
+            
+            sum_data = 0
+            p = 0
+        else:
+            sum_data += data
+            p = 1
+                
             
         # print()
         # print()
