@@ -57,8 +57,7 @@ def linear_to_alaw(bytes_val: bytes) -> bytes:
             data = sum_data + data*16*16
             if data >= 0xf000:
                 data = data + 0xffff0000
-            
-            data = ~data
+                data = ~data
             # print(data)
             
             data = data >> 3
