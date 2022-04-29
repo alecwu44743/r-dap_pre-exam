@@ -55,12 +55,12 @@ int linear_to_alaw(int val){
 int main(){
     int test;
 
-    // while(scanf("%d", &test) != EOF){
-    //     printf("%d\n", linear_to_alaw(test));
-    // }
-
-
-    for(int i=0; i<=256; i++){
-        printf("%d\n", linear_to_alaw(i));
+    while(scanf("%d", &test) != EOF){
+        printf("%d\n", linear_to_alaw(test));
     }
+
+
+    // for(int i=0; i<=256; i++){
+    //     printf("%d\n", linear_to_alaw(i));
+    // }
 }
