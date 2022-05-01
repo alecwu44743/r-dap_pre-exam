@@ -62,16 +62,16 @@ def linear_to_alaw(bytes_val: bytes) -> bytes:
             
             data = data >> 3
         
-            if data >= 0:
-                mask = 0xD5
+            if data >= 0:  
+                mask = 0xD5     # 11010101
             else:
-                mask = 0x55
+                mask = 0x55     # 01010101
                 data = -data - 1
                 
             seg = find_aend(data)
 
             if seg >= 8:
-                out += int2bytes((0x7F ^ mask))
+                out += int2bytes((0x7F ^ mask))   #001111111
             else:
                 aval = seg << SEG_SHIFT
                 # print(aval)
